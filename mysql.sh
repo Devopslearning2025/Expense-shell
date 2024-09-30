@@ -26,7 +26,7 @@ else
 fi
 }
 
-dnf install mysql -y &>> $LOG
+dnf install mysql-server -y &>> $LOG
 VALIDATE $? "The mysql installation is"
 
 systemctl enable mysqld &>> $LOG

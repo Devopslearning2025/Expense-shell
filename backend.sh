@@ -57,7 +57,7 @@ rm -rf /app/* &>> $LOG
 npm install &>> $LOG
 VALIDATE $? "npm dependies install is"
 
-cp /home/ec2-user/Project-Automation/backend.service /etc/systemd/system/backend.service  &>>$LOG
+cp /home/ec2-user/Expense-shell/backend.service /etc/systemd/system/backend.service  &>>$LOG
 VALIDATE $? "copied backend.servce"
 
 systemctl daemon-reload  &>>$LOG

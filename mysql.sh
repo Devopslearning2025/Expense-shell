@@ -16,7 +16,6 @@ else
     echo "You are super user"
 fi
 
-echo "all packages: $@"
 VALIDATE (){
 if [ $1 -ne 0 ]
 then
@@ -30,8 +29,11 @@ fi
 dnf install mysql -y &>> $LOG
 VALIDATE $? "The mysql installation is"
 
-systemctl enable mysqld
+systemctl enable mysqld &>> $LOG
 VALIDATE $? "Enabled mysqld is"
 
-systemctl start mysqld
+systemctl start mysqld &>> $LOG
 VALIDATE $? "mysql start is"
+
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>> $LOG
+VALIDATE $? "root password setting is"

@@ -49,13 +49,13 @@ VALIDATE $? "dir creation is"
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>> $LOG
 VALIDATE $? "download code is"
 
-unzip /tmp/backend.zip -y &>> $LOG
-VALIDATE $? "unzip code is"
-
 cd /app
 rm -rf /app/* &>> $LOG
 npm install &>> $LOG
 VALIDATE $? "npm dependies install is"
+
+unzip /tmp/backend.zip -y &>> $LOG
+VALIDATE $? "unzip code is"
 
 cp /home/ec2-user/Expense-shell/backend.service /etc/systemd/system/backend.service  &>>$LOG
 VALIDATE $? "copied backend.servce"

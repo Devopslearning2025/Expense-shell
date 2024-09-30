@@ -51,11 +51,11 @@ VALIDATE $? "download code is"
 
 cd /app
 rm -rf /app/* &>> $LOG
-npm install &>> $LOG
-VALIDATE $? "npm dependies install is"
-
 unzip /tmp/backend.zip &>> $LOG
 VALIDATE $? "unzip code is"
+
+npm install &>> $LOG
+VALIDATE $? "npm dependies install is"
 
 cp /home/ec2-user/Expense-shell/backend.service /etc/systemd/system/backend.service  &>>$LOG
 VALIDATE $? "copied backend.servce"

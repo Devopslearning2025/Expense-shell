@@ -49,7 +49,7 @@ VALIDATE $? "dir creation is"
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>> $LOG
 VALIDATE $? "download code is"
 
-unzip /tmp/backend.zip &>> $LOG
+unzip /tmp/backend.zip -y &>> $LOG
 VALIDATE $? "unzip code is"
 
 cd /app

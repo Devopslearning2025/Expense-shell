@@ -54,7 +54,7 @@ rm -rf /app/* &>> $LOG
 npm install &>> $LOG
 VALIDATE $? "npm dependies install is"
 
-unzip /tmp/backend.zip -y &>> $LOG
+unzip /tmp/backend.zip &>> $LOG
 VALIDATE $? "unzip code is"
 
 cp /home/ec2-user/Expense-shell/backend.service /etc/systemd/system/backend.service  &>>$LOG

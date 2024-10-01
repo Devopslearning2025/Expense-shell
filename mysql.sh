@@ -7,6 +7,8 @@ R="\e[31m"
 Y="\e[33m"
 G="\e[32m"
 N="\e[0m"
+echo "Enter the db root password"
+read -s mysql_root_password
 
 if [ $USER -ne 0 ]
 then
@@ -35,5 +37,13 @@ VALIDATE $? "Enabled mysqld is"
 systemctl start mysqld &>> $LOG
 VALIDATE $? "mysql start is"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>> $LOG
-VALIDATE $? "root password setting is"
+##checking mysql root password setup
+mysql -h db.devopslearning2025.online -uroot -p${mysql_root_password} -e 'SHOW DATABSES;' &>>LOG
+
+if [ $? -ne 0 ]
+then 
+    mysql_secure_installation --set-root-pass ${mysql_root_password} &>> $LOG
+    VALIDATE $? "root password setting is"
+else
+    echo -e "mysql password already setup $Y SKIPPING... $N"
+fi

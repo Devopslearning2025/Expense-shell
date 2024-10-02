@@ -74,7 +74,7 @@ VALIDATE $? "backend enabled"
 dnf install mysql -y &>>$LOG
 VALIDATE $? "installed mysql client is"
 
-mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -p${mysql_root_password} < /app/schema/backend.sql  &>>$LOG
+mysql -h db.devopslerning2025.online -uroot -p${mysql_root_password} < /app/schema/backend.sql  &>>$LOG
 VALIDATE $? "schema loading is"
 
 systemctl restart backend  &>>$LOG
